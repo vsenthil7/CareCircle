@@ -1,0 +1,365 @@
+<!doctype html>
+<!-- aws_claude_md-page-template_v003_20261020_1046.html - ai-workspace-standards rule 33 (S2.6, T028). Immutable.
+     v003 (Senthil 10:44): the look of the status board he liked (AI Relay storyboard v026 / build_v3: rail sidebar with
+     uppercase group headings, Fraunces + IBM Plex, tiles, pills, cards); every ### block is a card that starts CLOSED
+     (add {.open} after the heading to start it open; {.blocked} {.in-progress} {.planned} {.done} {.dropped} colour it);
+     one ## section at a time; Back; Copy on every code block; light/dark; phone. Filled by md_render/aws_*_md-to-html_*.py.
+     Placeholders (each in double curly braces): TITLE BODY META_JSON GENERATED SOURCE. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CareCircle — current market and positioning</title>
+<meta name="template" content="aws_claude_md-page-template_v003_20261020_1046.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600&display=swap">
+<style>
+:root{--bg:#f5f6f4;--panel:#fff;--rail:#e9ece7;--fg:#1d2420;--muted:#5d675f;--line:#d5dbd3;--accent:#2f6b57;--accent-soft:#dcebe4;
+--ok:#2f7a45;--ok-soft:#dff1e3;--warn:#9a6511;--warn-soft:#f8ebd2;--bad:#a3392c;--bad-soft:#f6dfdb;--plan:#4b5c8a;--plan-soft:#e2e7f4;--drop:#777;--drop-soft:#ececec;
+--display:"Fraunces",Georgia,serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141917;--panel:#1b211e;--rail:#18201c;--fg:#e4ebe6;--muted:#9aa69e;--line:#2d3631;--accent:#7cc4a6;--accent-soft:#1f3a30;
+--ok:#7fd096;--ok-soft:#1d3324;--warn:#e5b462;--warn-soft:#3a2d15;--bad:#ef8f80;--bad-soft:#3d201b;--plan:#a5b4e6;--plan-soft:#232a40;--drop:#a8a8a8;--drop-soft:#2a2a2a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141917;--panel:#1b211e;--rail:#18201c;--fg:#e4ebe6;--muted:#9aa69e;--line:#2d3631;--accent:#7cc4a6;--accent-soft:#1f3a30;
+--ok:#7fd096;--ok-soft:#1d3324;--warn:#e5b462;--warn-soft:#3a2d15;--bad:#ef8f80;--bad-soft:#3d201b;--plan:#a5b4e6;--plan-soft:#232a40;--drop:#a8a8a8;--drop-soft:#2a2a2a;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;margin:0}
+.app{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+.app.folded{grid-template-columns:44px minmax(0,1fr)}
+nav{background:var(--rail);border-right:1px solid var(--line);padding-block:14px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:10px;position:sticky;top:0;align-self:start;height:100vh;overflow:auto;box-sizing:border-box}
+.app.folded nav .navbody,.app.folded nav .brand,.app.folded nav .stamp{display:none}
+.fold{all:unset;cursor:pointer;font-family:var(--mono);font-size:13px;padding:4px 8px;border-radius:6px;border:1px solid var(--line);background:var(--panel);margin-bottom:10px;display:inline-block}
+.brand{font-family:var(--display);font-size:20px;margin:0}.stamp{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-bottom:8px}
+nav details{margin:2px 0} nav summary{cursor:pointer;list-style:none;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:8px 6px 4px;display:flex;justify-content:space-between}
+nav summary::-webkit-details-marker{display:none} nav summary::after{content:"\25BE"} nav details:not([open]) summary::after{content:"\25B8"}
+nav a.item{display:flex;justify-content:space-between;gap:8px;padding:6px 10px;border-radius:6px;color:inherit;text-decoration:none;font-size:14px}
+nav a.item.sub{padding-left:20px;font-size:13.5px}
+nav a.item:hover{background:var(--accent-soft)} nav a.item[aria-current="page"]{background:var(--accent);color:var(--panel);font-weight:600}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.cnt{font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums}
+main{padding-block:22px 40px;padding-left:26px;padding-right:max(16px,env(safe-area-inset-right,0px));min-width:0}
+h1{font-family:var(--display);font-size:27px;margin:0 0 4px;text-wrap:balance} h2{font-size:16px;margin:0;text-wrap:balance} h3{font-size:14px;margin:14px 0 6px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 16px;max-width:76ch}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.back{all:unset;cursor:pointer;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:6px 12px;font-weight:500}.back:hover{border-color:var(--accent)}
+.crumb{color:var(--muted);font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:0 0 14px}
+.tile{display:block;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--plan);border-radius:8px;padding:10px 12px;color:inherit;text-decoration:none}
+.tile:hover{border-color:var(--accent)} .tile b{display:block;font-family:var(--mono);font-size:24px;font-variant-numeric:tabular-nums}.tile span{font-size:13px;color:var(--muted)}
+.tile.blocked,.tile.you{border-left-color:var(--bad)}.tile.in-progress{border-left-color:var(--warn)}.tile.done{border-left-color:var(--ok)}.tile.dropped{border-left-color:var(--drop)}
+section.box{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:0 0 12px}
+section.box>details>summary{cursor:pointer;padding:11px 14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;list-style:none}
+section.box>details>summary::-webkit-details-marker{display:none}
+section.box>details>summary::before{content:"\25BE";color:var(--muted);margin-right:6px} section.box>details:not([open])>summary::before{content:"\25B8"}
+section.box>details>summary h2{flex:1}
+.inner{padding:0 14px 12px}
+.card{border:1px solid var(--line);border-left:4px solid var(--plan);border-radius:6px;margin:0 0 8px;background:var(--panel)}
+.card.blocked{border-left-color:var(--bad)}.card.in-progress{border-left-color:var(--warn)}.card.done{border-left-color:var(--ok)}.card.dropped{border-left-color:var(--drop)}
+.card>summary{cursor:pointer;list-style:none;padding:8px 10px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:baseline}
+.card>summary::-webkit-details-marker{display:none}
+.card .body{padding:0 10px 10px 10px;border-top:1px dashed var(--line);font-size:14px}
+.meta{font-family:var(--mono);font-size:12px;color:var(--muted)} .note{color:var(--muted);font-size:13px;display:block;margin-top:2px}
+.pill{display:inline-block;font-size:12px;font-weight:500;padding:1px 8px;border-radius:99px;white-space:nowrap}
+.p-done{background:var(--ok-soft);color:var(--ok)}.p-blocked{background:var(--bad-soft);color:var(--bad)}.p-in-progress{background:var(--warn-soft);color:var(--warn)}.p-planned{background:var(--plan-soft);color:var(--plan)}.p-dropped{background:var(--drop-soft);color:var(--drop)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.btn{border:1px solid var(--line);border-radius:6px;padding:4px 10px;font-size:13px;color:inherit;text-decoration:none;background:var(--bg)}.btn:hover{border-color:var(--accent)}
+.you{border:2px solid var(--bad);border-radius:10px;padding:12px 16px;margin:0 0 14px;background:var(--panel);max-width:860px}
+.you pre,.detail pre{background:var(--rail);border:1px solid var(--line);border-radius:6px;padding:10px;overflow-x:auto;font-family:var(--mono);font-size:13px;white-space:pre}
+code{font-family:var(--mono);font-size:.92em;background:var(--rail);padding:0 4px;border-radius:3px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14px} th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top} tr:last-child td{border-bottom:0} tr.click{cursor:pointer} tr.click:hover{background:var(--accent-soft)}
+.mono{font-family:var(--mono);font-size:12px;white-space:nowrap;font-variant-numeric:tabular-nums}
+article{border-bottom:1px solid var(--line);padding:8px 0;scroll-margin-top:16px} article:last-child{border-bottom:0} article.flash,section.flash{outline:3px solid var(--accent)}
+article p{margin:4px 0 6px;max-width:82ch}
+.cp{all:unset;cursor:pointer;font:500 11px var(--body);border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-left:4px;background:var(--panel);color:var(--accent);vertical-align:1px}
+.cp:hover,.cp:focus-visible{border-color:var(--accent)} .cp.ok{color:var(--ok);border-color:var(--ok)}
+pre{position:relative} pre>.cp{position:absolute;top:6px;right:6px}
+a{color:var(--accent)} .foot{margin-top:26px;font-size:12px;color:var(--muted);font-family:var(--mono)}
+@media (max-width:780px){.app,.app.folded{grid-template-columns:1fr}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding-right:max(16px,env(safe-area-inset-right,0px))}
+ main{padding-left:max(16px,env(safe-area-inset-left,0px))}.prog{grid-template-columns:minmax(0,1fr) 90px auto}}
+@media (prefers-reduced-motion:no-preference){.tile,.card,nav a.item{transition:border-color .12s,background .12s}}
+const short = id => id.replace("AR-TASK-", "");
+[id]{scroll-margin-top:16px}
+nav a.item.h2{font-weight:600}
+main section.view{display:none;max-width:1100px} main section.view.on{display:block}
+body.all main section.view{display:block;border-bottom:2px solid var(--line);padding-bottom:12px;margin-bottom:18px}
+main section.view>h2{font-family:var(--display);font-size:24px;margin:0 0 10px}
+main p{max-width:86ch}
+details.card>summary{grid-template-columns:auto minmax(0,1fr)}
+details.card>summary::before{content:"\25B8";color:var(--muted)} details.card[open]>summary::before{content:"\25BE"}
+details.card>summary h3{margin:0;font-size:14.5px;font-weight:600}
+details.card .body{padding-top:8px}
+details.card.flash{outline:3px solid var(--accent)}
+.tbl{margin:8px 0}
+pre{background:var(--rail);border:1px solid var(--line);border-radius:6px;padding:10px 70px 10px 10px;overflow-x:auto;font-family:var(--mono);font-size:13px;white-space:pre}
+pre code{background:none;padding:0}
+details.fold-in{border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin:6px 0;background:var(--panel)} details.fold-in>summary{cursor:pointer;font-weight:500}
+.tools{margin-left:auto;display:flex;gap:8px}
+@media print{nav,.bar{display:none}main section.view{display:block!important}details{open:true}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<nav aria-label="Sections"><button class="fold" id="fold" aria-expanded="true">&#9776; hide</button><p class="brand" id="brand"></p><div class="stamp" id="stamp"></div><div class="navbody" id="navbody"></div></nav>
+<main id="main">
+<div class="bar"><button class="back" id="back" disabled>&larr; Back</button><span class="crumb" id="crumb"></span><span class="tools"><button class="back" id="all">Show all</button><button class="back" id="openall">Open all cards</button><button class="back" id="theme" title="Light / dark">&#9680;</button></span></div>
+<div id="src">
+<h1 id="carecircle-current-market-and-positioning">CareCircle — current market and positioning</h1>
+<p>21 October 2026 23:58 Europe/London · v001 · Research, not validated demand.</p>
+<h2 id="recommendation">Recommendation</h2>
+<p>Continue with a <strong>care-logistics coordinator that resolves changed plans into named, explicitly accepted handovers</strong>. Treat this as a testable proposition. The original broad gap claim is unsupported: calendars, care plans, family updates, voice assistance and AI summaries already have competitors.</p>
+<p>No competitor was tested signed in. Published features below are vendor/publisher statements, not independently observed runtime behaviour. An undocumented feature is not proof of absence.</p>
+<h2 id="comparison">Comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Alternative</th>
+<th>Existing offer</th>
+<th>Price / maturity observed</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Caring Village [S01–02]</td>
+<td>Family tasks/calendar/sharing; professional care coordination</td>
+<td>Free/$14.99/$24.99 monthly; professional annual tiers from $499.99</td>
+<td>Generic family hub and agency portal already occupied</td>
+</tr>
+<tr>
+<td>Jointly [S03]</td>
+<td>Assigned tasks, calendar, notes and communication</td>
+<td>£2.99 one-off circle</td>
+<td>Strong low-cost substitute; subscription needs measurable extra value</td>
+</tr>
+<tr>
+<td>Lotsa Helping Hands [S04]</td>
+<td>Community requests, reminders and volunteer coordination</td>
+<td>Opened My Cancer Circle offer free</td>
+<td>Organizing helpers alone is insufficient</td>
+</tr>
+<tr>
+<td>Birdie [S05]</td>
+<td>Family visibility into agency-delivered care</td>
+<td>Agency platform; price not verified</td>
+<td>Avoid duplicate record entry; integrations require access</td>
+</tr>
+<tr>
+<td>Wellthy / Cariloop [S06–07]</td>
+<td>Digital tools and human coordination through employers</td>
+<td>Covered benefit / commercial contract</td>
+<td>Established buyers, distribution and competition</td>
+</tr>
+<tr>
+<td>CaringIQ [S08]</td>
+<td>Proactive text assistant, shared record, follow-ups</td>
+<td>Advertised free beta</td>
+<td>Familiar messaging plus AI already claimed</td>
+</tr>
+<tr>
+<td>AyuraAI [S09]</td>
+<td>Care coordination, AI summaries</td>
+<td>Pre-launch / early access</td>
+<td>AI elder-care summaries are not unique</td>
+</tr>
+<tr>
+<td>Caily AI / Caily [S10–11]</td>
+<td>Phone assistant pilot / senior-living communication</td>
+<td>Different sites; prices/adoption unverified</td>
+<td>Voice and family communication are contested</td>
+</tr>
+<tr>
+<td>Existing messaging/calendar</td>
+<td>Familiar current-tool baseline to measure with users</td>
+<td>Migration effort effectively zero</td>
+<td>Measure net work saved, including onboarding</td>
+</tr>
+</tbody>
+</table>
+<p>NAC/AARP [S12] supports a substantial care burden. It does not establish willingness to switch, retention, acquisition costs or CareCircle's addressable revenue.</p>
+<h2 id="initial-user-and-buyer">Initial user and buyer</h2>
+<p>Recommended user hypothesis: a family coordinator and at least two helpers handling recurring nonclinical logistics, with the recipient's preferences and authority explicitly represented. A paid helper may join under scoped delegation; family relationship alone grants no authority.</p>
+<p>Competing buyer hypotheses: a family pays for less chasing; an independent coordinator/agency pays for fewer follow-ups. Agency deployment adds procurement, integration and duplicate-entry risks. Employer benefits are a later option. No single buyer or billing model is validated.</p>
+<h2 id="build-integrate-or-stop">Build, integrate or stop</h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build</td>
+<td>Assignment acceptance, conflicting changes, exact proposal approvals, accepted handovers, overdue exceptions and provenance</td>
+</tr>
+<tr>
+<td>Integrate</td>
+<td>Managed identity, one calendar, one notification provider after actual API/account tests</td>
+</tr>
+<tr>
+<td>Defer pending access</td>
+<td>Pharmacy/transport transactions, agency-system integration and native Alexa publishing</td>
+</tr>
+<tr>
+<td>Avoid claims</td>
+<td>“Only AI care coordinator”, guaranteed safety, voice proves identity, notification proves care completion</td>
+</tr>
+<tr>
+<td>Prefer an adapter</td>
+<td>If incumbent workflow tests show the remaining pain is only moving data between systems</td>
+</tr>
+<tr>
+<td>Stop/pivot</td>
+<td>Current tools solve the same journey as easily; helpers do not acknowledge; approvals/dual entry cost more time than saved; no buyer commits</td>
+</tr>
+</tbody>
+</table>
+<h2 id="validation-plan-not-executed">Validation plan — not executed</h2>
+<p>After agreement, prepare a consented learning pilot of approximately five circles and two professional coordinators. This is not a representative market sample. No outreach is authorized by this plan.</p>
+<p>Compare the same rescheduled appointment journey in current tools and CareCircle: changed time → conflict → approved owner → helper acceptance → handover → reported closure. Measure coordinator minutes, reminders, unaccepted assignments, errors and recipient burden.</p>
+<p>Proposed predeclared thresholds: 30% less coordinator handling time; 80% of eligible handovers accepted within the agreed deadline; no unauthorized action/disclosure in observed cases; three circles still using weekly after four weeks; two buyers accepting an explicit paid continuation offer. Targets are hypotheses to agree before measurement; disclose dropouts and small sample size.</p>
+<p>Price remains undecided. Test family subscription versus agency per-active-circle fee/minimum plan. Competitor prices are anchors, not evidence for our pricing. Include support and integration maintenance in margins.</p>
+<h2 id="source-register">Source register</h2>
+<p>Opened 21 October 2026 approximately 23:56–23:58 Europe/London. Search does not expose exact wall time per request. Retrieval date is not publication date. No user history used as market evidence.</p>
+<h3 id="s01-caring-village-pricing">S01 — Caring Village pricing</h3>
+<p><a href="https://caringvillage.com/pricing/">Primary page</a>
+Published offer: free tier; Circle $14.99/month; Village $24.99/month. Annual billing is separate. Calendar, tasks, sharing and care plans overlap with the proposal.</p>
+<h3 id="s02-caring-village-professionals">S02 — Caring Village professionals</h3>
+<p><a href="https://caringvillage.com/for-professionals/">Primary page</a>
+Published annual tiers $499.99/10 clients, $999.99/25, $1,499.99/50. Family/caregiver records and access controls. Vendor savings calculator is an estimate.</p>
+<h3 id="s03-carers-uk-jointly">S03 — Carers UK Jointly</h3>
+<p><a href="https://www.carersuk.org/help-and-advice/technology-and-equipment/jointly-app-for-carers/">Primary page</a>
+Publisher documents assigned tasks, notes, calendars and communication. One-off £2.99 per circle; invited helpers have no additional charge.</p>
+<h3 id="s04-lotsa-helping-hands">S04 — Lotsa Helping Hands</h3>
+<p><a href="https://lotsahelpinghands.com/how-it-works">Primary page</a>
+Help requests, volunteers, reminders and shared updates. Opened page describes My Cancer Circle communities as free; do not generalize all related services' terms.</p>
+<h3 id="s05-birdie-workflow">S05 — Birdie workflow</h3>
+<p><a href="https://www.birdie.care/blog/real-time-family-care-updates">Primary page</a>
+Vendor describes read-only family visibility into agency care and visit updates. Comparable price and open API access not established.</p>
+<h3 id="s06-columbia-wellthy-benefit">S06 — Columbia Wellthy benefit</h3>
+<p><a href="https://humanresources.columbia.edu/content/wellthy">Primary page</a>
+Customer/employer confirms covered digital tools plus human coordinators handling logistical and administrative work. Evidence of distribution, not CareCircle demand.</p>
+<h3 id="s07-cariloop-faq">S07 — Cariloop FAQ</h3>
+<p><a href="https://cariloop.com/about-us/faqs">Primary page</a>
+Vendor describes employer caregiver support and care coaches; competes for coordination budgets. Public comparable contract price not established.</p>
+<h3 id="s08-caringiq">S08 — CaringIQ</h3>
+<p><a href="https://www.caringiq.com/">Primary page</a>
+Vendor claims text-based proactive caregiver assistant, shared record and follow-up reminders. Advertised free beta. No account/runtime/adoption tested.</p>
+<h3 id="s09-ayuraai">S09 — AyuraAI</h3>
+<p><a href="https://www.ayuraai.co.uk/">Primary page</a>
+Vendor claims care coordination and human-checked AI summaries. Explicit pre-launch/early-access status, not established deployed capability.</p>
+<h3 id="s10-caily-ai">S10 — Caily AI</h3>
+<p><a href="https://www.caily.ai/">Primary page</a>
+Vendor claims phone-accessible senior assistant and family updates; invites pilot participation. Runtime and adoption unverified.</p>
+<h3 id="s11-caily">S11 — Caily</h3>
+<p><a href="https://www.caily.com/">Primary page</a>
+Vendor claims senior-living communications platform. Compliance is a vendor assertion, not independently assessed. No corporate relationship with similarly named sites assumed.</p>
+<h3 id="s12-nacaarp-research-project">S12 — NAC/AARP research project</h3>
+<p><a href="https://www.caregivingintheus.org/">Primary page</a>
+2025 study describes 63 million US caregivers. Burden evidence; not a UK market size or paying-user estimate.</p>
+<h3 id="s13-mcp-release">S13 — MCP release</h3>
+<p><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/">Primary page</a>
+Official current release changes statefulness and interaction patterns; Tasks moves to an extension. Host/version compatibility needs explicit tests.</p>
+<h3 id="s14-mcp-streamable-http">S14 — MCP Streamable HTTP</h3>
+<p><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http">Primary page</a>
+Official specification defines POST endpoint, headers, origin validation and backward-compatibility changes.</p>
+<h3 id="s15-mcp-authorization">S15 — MCP authorization</h3>
+<p><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization">Primary page</a>
+Official HTTP authorization model. Transport authorization does not replace circle/object permissions.</p>
+<h3 id="s16-alexa-mcp-toolkit">S16 — Alexa+ MCP Toolkit</h3>
+<p><a href="https://developer.amazon.com/docs/alexaplus/add-ons/mcp-toolkit-overview">Primary page</a>
+Official page specifies 2025-11-25 support with Alexa as client. Documentation availability is not an access entitlement.</p>
+<h3 id="s17-organizer-faq">S17 — Organizer FAQ</h3>
+<p><a href="https://amazonappdev2026.devpost.com/details/faqs">Primary page</a>
+Native tooling remains restricted; own real MCP web client accepted without physical Alexa hardware.</p>
+<h3 id="s18-organizer-rules">S18 — Organizer rules</h3>
+<p><a href="https://amazonappdev2026.devpost.com/rules">Primary page</a>
+Deadline 23 October 2026 noon Pacific = 20:00 Europe/London. Working source, instructions and demo required. Public entry needs open-source license. Separate simulation route permitted.</p>
+<h2 id="retrieval-limitations-and-evidence-labels">Retrieval limitations and evidence labels</h2>
+<p>Jointly app root was JavaScript-only, so publisher documentation was used. AARP direct report page returned 403; official research-project site opened instead. Agency customer page returned 403 and was not treated as verified evidence. CaringIQ fetched successfully once; a repeat failed. No competitor purchase, live provider API, native Alexa entitlement or independent reliability trial occurred.</p>
+<p>FACT: page text/displayed price/stage. VENDOR CLAIM: advertised functionality/results. INFERENCE: recommended positioning. HYPOTHESIS: unmet need, targets and willingness to pay. UNKNOWN: reliability, adoption and undocumented access.</p>
+</div>
+<div class="foot">Generated 2026-10-22 Europe/London from cc_chatgpt_market_v001_20261021_2358.md by the ai-workspace-standards md-page standard (rule 33). Do not edit this file; edit the MD and render a new version.</div>
+</main>
+</div>
+<script type="application/json" id="page-meta">{"source": "cc_chatgpt_market_v001_20261021_2358.md", "source_sha256": "443f3f5561c5a0a50da142f5d5258d88af347fb2f5edcb39e07203e7b8c5fea1", "script": "aws_claude_md-to-html_v003_20261021_1825.py", "generated": "2026-10-22 Europe/London"}</script>
+<script>
+(function () {
+  var src = document.getElementById("src"), navbody = document.getElementById("navbody");
+  try { document.getElementById("stamp").textContent = JSON.parse(document.getElementById("page-meta").textContent).generated; } catch (x) {}
+  var h1 = src.querySelector("h1"); document.getElementById("brand").textContent = h1 ? h1.textContent.split(/ [—-] /)[0] : document.title;
+  // 1. sections at each H2 (anything before the first H2 goes into the first section)
+  var secs = [], cur = null, lead = [];
+  Array.prototype.slice.call(src.childNodes).forEach(function (n) {
+    if (n.nodeType === 1 && n.tagName === "H2") { cur = document.createElement("section"); cur.className = "view"; cur.id = "s-" + (n.id || secs.length); secs.push(cur); }
+    if (cur) cur.appendChild(n); else lead.push(n);
+  });
+  if (!secs.length) { cur = document.createElement("section"); cur.className = "view"; cur.id = "s-0"; secs.push(cur); }
+  lead.reverse().forEach(function (n) { secs[0].insertBefore(n, secs[0].firstChild); });
+  secs.forEach(function (s) { src.appendChild(s); });
+  // 2. every H3 + what follows it (until the next H3) becomes a card, closed unless the H3 has class "open"
+  secs.forEach(function (s) {
+    var kids = Array.prototype.slice.call(s.childNodes), card = null, body = null;
+    kids.forEach(function (n) {
+      if (n.nodeType === 1 && n.tagName === "H3") {
+        card = document.createElement("details"); card.className = "card " + (n.className || "");
+        if (n.classList.contains("open")) card.open = true;
+        if (n.id) { card.id = n.id; n.removeAttribute("id"); }
+        var sum = document.createElement("summary"); sum.appendChild(n); card.appendChild(sum);
+        body = document.createElement("div"); body.className = "body"; card.appendChild(body); s.appendChild(card); return;
+      }
+      if (n.nodeType === 1 && n.tagName === "H2") { card = null; return; }
+      if (card) body.appendChild(n);
+    });
+  });
+  // tables scroll inside a frame
+  document.querySelectorAll("#src table").forEach(function (t) { var w = document.createElement("div"); w.className = "tbl"; t.parentNode.insertBefore(w, t); w.appendChild(t); });
+  // 3. sidebar: one group per section, its cards as items
+  secs.forEach(function (s, i) {
+    var h2 = s.querySelector("h2"), name = h2 ? h2.textContent : "Page", cards = s.querySelectorAll("details.card");
+    var d = document.createElement("details"); d.open = i === 0;
+    var sm = document.createElement("summary"); sm.textContent = name; d.appendChild(sm);
+    var top = document.createElement("a"); top.className = "item h2"; top.href = "#" + s.id; top.dataset.sec = s.id;
+    top.innerHTML = "<span></span><span class=cnt></span>"; top.firstChild.textContent = name; top.lastChild.textContent = cards.length || ""; d.appendChild(top);
+    Array.prototype.forEach.call(cards, function (c, j) { if (!c.id) c.id = s.id + "-c" + j; var a = document.createElement("a"); a.className = "item sub"; a.href = "#" + c.id; a.textContent = c.querySelector("h3").textContent; d.appendChild(a); });
+    navbody.appendChild(d);
+  });
+  // 4. navigation with a Back stack
+  var stack = [], here = null, backBtn = document.getElementById("back"), crumb = document.getElementById("crumb");
+  function secOf(el) { while (el && !(el.tagName === "SECTION" && el.classList.contains("view"))) el = el.parentNode; return el; }
+  function go(id, push) {
+    var t = document.getElementById(id); if (!t) return false; var s = secOf(t) || t; if (!s || !s.classList) return false;
+    if (push && here) { here.y = window.scrollY; stack.push(here); backBtn.disabled = false; }
+    secs.forEach(function (x) { x.classList.toggle("on", x === s); });
+    navbody.querySelectorAll("a.item").forEach(function (a) { a.removeAttribute("aria-current"); });
+    var cur = navbody.querySelector('a.item[href="#' + (t === s ? s.id : id) + '"]') || navbody.querySelector('a.item[href="#' + s.id + '"]');
+    if (cur) { cur.setAttribute("aria-current", "page"); cur.parentNode.open = true; }
+    var h2 = s.querySelector("h2"); crumb.textContent = h2 ? h2.textContent : "";
+    here = { id: id, y: 0 };
+    if (t !== s) { var c = t.tagName === "DETAILS" ? t : t.closest("details.card"); if (c) { c.open = true; c.classList.add("flash"); setTimeout(function () { c.classList.remove("flash"); }, 1200); }
+      if (t.scrollIntoView) t.scrollIntoView(); } else window.scrollTo(0, 0);
+    return true;
+  }
+  backBtn.onclick = function () { var p = stack.pop(); if (!p) return; go(p.id, false); if (p.y) window.scrollTo(0, p.y); backBtn.disabled = !stack.length; };
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[href^='#']"); if (!a) return;
+    var id = decodeURIComponent(a.getAttribute("href").slice(1)); if (!document.getElementById(id) && document.getElementById("s-" + id)) id = "s-" + id;
+    if (go(id, true)) e.preventDefault();
+  });
+  // 5. Copy on every code block (copies the code only)
+  document.querySelectorAll("#src pre").forEach(function (p) {
+    var txt = p.innerText, c = document.createElement("button"); c.className = "cp"; c.textContent = "Copy";
+    c.onclick = function (ev) { ev.preventDefault(); var done = function () { c.textContent = "Copied"; c.classList.add("ok"); setTimeout(function () { c.textContent = "Copy"; c.classList.remove("ok"); }, 1300); };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function () {}); else { var t = document.createElement("textarea"); t.value = txt; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (x) {} t.remove(); } };
+    p.appendChild(c);
+  });
+  document.getElementById("fold").onclick = function () { var f = document.getElementById("app").classList.toggle("folded"); this.innerHTML = f ? "&#9776;" : "&#9776; hide"; this.setAttribute("aria-expanded", String(!f)); };
+  document.getElementById("all").onclick = function () { var on = document.body.classList.toggle("all"); this.textContent = on ? "One section" : "Show all"; };
+  document.getElementById("openall").onclick = function () { var cards = document.querySelectorAll("details.card"), open = this.textContent === "Open all cards"; cards.forEach(function (c) { c.open = open; }); this.textContent = open ? "Close all cards" : "Open all cards"; };
+  document.getElementById("theme").onclick = function () { var r = document.documentElement, d = r.getAttribute("data-theme"); r.setAttribute("data-theme", d === "dark" ? "light" : "dark"); };
+  var start = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
+  if (!(start && go(start, false))) go(secs[0].id, false);
+})();
+</script>
+</body>
+</html>
